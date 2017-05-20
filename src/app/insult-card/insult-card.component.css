@@ -1,0 +1,15 @@
+.insult{
+    text-align: center;
+}
+
+.insult h1 {
+    font-size: 10vw !important;
+}
+
+.site-wrapper-inner {
+    vertical-align: middle;
+}
+
+h1:hover {
+    cursor: pointer;
+}

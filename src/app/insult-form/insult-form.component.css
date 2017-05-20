@@ -1,0 +1,11 @@
+.insult {
+    text-align: center;
+}
+
+form.insult-form {
+    padding-top:20%;
+}
+
+input#copy-input:hover {
+    cursor: auto;
+}
