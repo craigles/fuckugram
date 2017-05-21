@@ -1,5 +1,5 @@
 <div class="insult">
   <h1 (click)="readInsult()">{{insultMessage}}</h1>
   <p>{{insultSubtitle}}</p>
-  <p *ngIf="isSpeaking">asdf</p>
+  <a *ngIf="insulter()" routerLink="/" id="sendInsultagramButton" class="btn btn-primary">Send an Insultagram to {{insulter()}}</a>
 </div>

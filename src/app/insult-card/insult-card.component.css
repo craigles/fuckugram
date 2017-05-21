@@ -3,7 +3,7 @@
 }
 
 .insult h1 {
-    font-size: 10vw !important;
+    font-size: 13vh !important;
 }
 
 .site-wrapper-inner {
@@ -12,4 +12,8 @@
 
 h1:hover {
     cursor: pointer;
+}
+
+#sendInsultagramButton {
+    margin-top: 50px;
 }

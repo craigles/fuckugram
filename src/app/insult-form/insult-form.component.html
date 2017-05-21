@@ -1,7 +1,9 @@
-<form class="insult-form">
+<h1>Insultagram</h1>
+<form #insultForm="ngForm" class="insult-form" (submit)="insult()" novalidate>
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
+        <label>Insult</label>
         <select [(ngModel)]="selectedOperation" name="selectedOperation" class="form-control">
           <option selected disabled value="">Select Insult</option>
           <option *ngFor="let o of operations" [ngValue]="o">{{o.name | slice:0:30}}</option>
@@ -9,30 +11,30 @@
       </div>
       
       <div class="form-group" *ngIf="selectedOperation">
-        <button (click)="insult()" class="btn btn-primary">Insult</button>
+        <button type="submit" [disabled]="!fieldsAreValid()" class="btn btn-block btn-primary">Create Insultagram</button>
       </div>
     </div>
     <div class="col-md-6">
       <div *ngFor="let f of selectedOperation.fields; let i = index" class="form-group">
+        <label>{{f.name}}</label>
         <input [(ngModel)]="fields[i]" name="fields[i]" class="form-control" placeholder="{{f.name}}"/>
       </div>
     </div>
   </div>
 </form> 
-<div class="insult">
-  <h1>{{insultMessage}}</h1>
+<div *ngIf="insultMessage" class="insult">
+  <hr/>
+  <h2>{{insultMessage}}</h2>
   <p>{{insultSubtitle}}</p>
+  <hr/>
 </div>
-<div *ngIf="insultMessage">
-  <p>Send an Insult:</p>
-  <form>
-    <div class="input-group">
-      <input class="form-control" [(ngModel)]="insultUrl" name="insultUrl" id="copy-input" disabled>
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button" title="Copy to Clipboard" (click)="copyToClipboard">
-          <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
-        </button>
-      </span>
-    </div>
-  </form>
-</div>
+
+<form id="sendInsult" *ngIf="insultUrl" >
+  <div class="form-group">
+      <p>Send an Insultagram <span *ngIf="insultee"> to {{insultee}}</span></p>
+      <div class="input-group">
+        <input class="form-control" [(ngModel)]="insultUrl" name="insultUrl" id="copy-input" disabled>
+        <div id="copy-input-button" class="input-group-addon" (click)="copyToClipboard()" title="Copy insult to clipboard"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></div>
+      </div>
+  </div>
+</form>

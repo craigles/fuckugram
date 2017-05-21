@@ -20,8 +20,9 @@ export class InsultCardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-       this.displayInsult(params['operationUrl']);
+    this.route.params.subscribe(params => {
+      let decodedUrl = window.atob(params['id']);
+      this.displayInsult(decodedUrl);
     });
   }
 
@@ -45,5 +46,9 @@ export class InsultCardComponent implements OnInit {
         this.readInsult();
       },
       error => this.insultMessage = <any>error);
+  }
+
+  insulter() {
+    return this.insultSubtitle.replace('- ', '');
   }
 }

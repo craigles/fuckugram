@@ -9,7 +9,7 @@ import { InsultCardComponent } from './insult-card/insult-card.component';
 import { InsultFormComponent } from './insult-form/insult-form.component';
 
 const appRoutes: Routes = [
-  { path: 'card', component: InsultCardComponent },
+  { path: ':id', component: InsultCardComponent },
   { path: '**', component: InsultFormComponent },
 ];
 

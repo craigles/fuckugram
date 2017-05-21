@@ -3,9 +3,39 @@
 }
 
 form.insult-form {
-    padding-top:20%;
+    padding-top:20px;
+}
+
+input#copy-input {
+    background-color: #444;
+    border-color: #444;
+    color: #888;
+}
+
+#sendInsult {
+    text-align: center;
+    width:210px;
+    margin:auto;
 }
 
 input#copy-input:hover {
     cursor: auto;
+}
+
+#copy-input-button {
+    background-color: #444;
+    border-color: #444;
+}
+
+#copy-input-button:hover {
+    cursor: pointer;
+}
+
+span.glyphicon {
+    color: white;
+}
+
+h1 {
+    font-size: 100px;
+    text-align: center;
 }
