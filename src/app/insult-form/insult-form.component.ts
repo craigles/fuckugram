@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { InsultService } from '../insult.service';
+import { OperationResolver } from '../operation-resolver';
 import { UrlShortenerService } from '../url-shortener.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import {Clipboard} from 'ts-clipboard';
+import { Clipboard } from 'ts-clipboard';
 
 @Component({
   selector: 'insult-form',
   templateUrl: './insult-form.component.html',
   styleUrls: ['./insult-form.component.css'],
-  providers: [InsultService, UrlShortenerService]
+  providers: [InsultService, UrlShortenerService, OperationResolver]
 })
 export class InsultFormComponent implements OnInit {
   insultMessage = "";
@@ -22,7 +23,8 @@ export class InsultFormComponent implements OnInit {
   constructor(
     private insultService: InsultService,
     private urlShortenerService: UrlShortenerService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
     ) { }
 
   insult() {
@@ -32,7 +34,7 @@ export class InsultFormComponent implements OnInit {
         this.insultSubtitle = data["subtitle"];
         let operationUrl = this.insultService.getOperationUrl(this.selectedOperation, this.fields);
         let encodedOperationUrl = window.btoa(operationUrl);
-        this.urlShortenerService.shorten(`${window.location.origin}/${encodedOperationUrl}`)
+        this.urlShortenerService.shorten(`${window.location.href}/${encodedOperationUrl}`)
           .subscribe(url => {
             this.insultUrl = url;
           });
@@ -50,18 +52,13 @@ export class InsultFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAllOperations();
+    this.operations = this.route.snapshot.data["operations"].filter(o => o["fields"].find(f => f["field"] == "from"));
   }
-
+ 
   fieldsAreValid() {
     let selectedFieldsLength = this.selectedOperation["fields"].length;
 
     return this.fields.length >= selectedFieldsLength && 
            this.fields.filter(f => f.trim() == "").length == 0;
-  }
-
-  getAllOperations() {
-    this.insultService.operations()
-      .subscribe(data => this.operations = data.filter(o => o["fields"].find(f => f["field"] == "from")));
   }
 }

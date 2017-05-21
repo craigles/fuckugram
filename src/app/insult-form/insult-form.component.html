@@ -14,7 +14,7 @@
         <button type="submit" [disabled]="!fieldsAreValid()" class="btn btn-block btn-primary">Create Insultagram</button>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" *ngIf="selectedOperation">
       <div *ngFor="let f of selectedOperation.fields; let i = index" class="form-group">
         <label>{{f.name}}</label>
         <input [(ngModel)]="fields[i]" name="fields[i]" class="form-control" placeholder="{{f.name}}"/>
