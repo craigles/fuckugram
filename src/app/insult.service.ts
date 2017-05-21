@@ -5,10 +5,10 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
-// http://foaas.com
+// https://foaas.com
 @Injectable()
 export class InsultService {
-  baseurl = 'http://foaas.com'
+  baseurl = 'https://foaas.com'
   constructor(private http: Http) { }
 
   insult(operation: Object, fields: any[]): Observable<any> {
@@ -36,7 +36,7 @@ export class InsultService {
     return operationUrl;
   }
 
-  // http://foaas.com/operations
+  // https://foaas.com/operations
   operations(): Observable<any> {
     return this.http.get(`${this.baseurl}/operations`)
       .map(res => res.json())

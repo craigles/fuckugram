@@ -13,7 +13,7 @@ import {Clipboard} from 'ts-clipboard';
 export class InsultFormComponent implements OnInit {
   insultMessage = "";
   insultSubtitle = "";
-  selectedOperation = "";
+  selectedOperation: any;
   insultUrl = "";
   insultee = "";
   fields: string[] = [];
