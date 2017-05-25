@@ -34,7 +34,7 @@ export class InsultFormComponent implements OnInit {
         this.insultSubtitle = data["subtitle"];
         let operationUrl = this.insultService.getOperationUrl(this.selectedOperation, this.fields);
         let encodedOperationUrl = window.btoa(operationUrl);
-        this.urlShortenerService.shorten(`${window.location.href}/${encodedOperationUrl}`)
+        this.urlShortenerService.shorten(`${window.location.href}${encodedOperationUrl}`)
           .subscribe(url => {
             this.insultUrl = url;
           });

@@ -31,7 +31,7 @@
 
 <form id="sendInsult" *ngIf="insultUrl" >
   <div class="form-group">
-      <p>Send an Insultagram <span *ngIf="insultee"> to {{insultee}}</span></p>
+      <p>Send this Insultagram <span *ngIf="insultee"> to {{insultee}}</span></p>
       <div class="input-group">
         <input class="form-control" [(ngModel)]="insultUrl" name="insultUrl" id="copy-input" disabled>
         <div id="copy-input-button" class="input-group-addon" (click)="copyToClipboard()" title="Copy insult to clipboard"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></div>
