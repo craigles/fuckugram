@@ -44,8 +44,11 @@ export class InsultService {
   }
   
   private handleError (error: any) {
-    let errMsg = (error.message) ? error.message :
-      error.status ? `${error.status} - ${error.statusText}` : 'Server   error';
+    let errMsg = {
+      "message": "Sorry I couldn't retrieve your hillarious insult. Actually I don't care. Shouldn't you be doing something more interesting? Get fucked.", 
+      "subtitle": "- craigles"
+    };
+
     return Observable.throw(errMsg);
   }
 }

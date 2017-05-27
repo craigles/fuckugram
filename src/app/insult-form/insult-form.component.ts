@@ -39,12 +39,20 @@ export class InsultFormComponent implements OnInit {
             this.insultUrl = url;
           });
 
-        window.speechSynthesis.speak(new SpeechSynthesisUtterance(this.insultMessage));
+        this.speak(this.insultMessage);
 
         let nameIndex = this.selectedOperation["fields"].findIndex(f => f["field"] == "name");
         this.insultee = this.fields[nameIndex];
       },
-      error => this.insultMessage = <any>error);
+      error => {
+        this.insultMessage = error.message;
+        this.insultSubtitle = error.subtitle;
+        this.speak(this.insultMessage);
+      });
+  }
+
+  speak(message: any) {
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance(message));
   }
 
   copyToClipboard() {
