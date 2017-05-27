@@ -9,6 +9,7 @@ import { InsultService } from './insult.service';
 import { AppComponent } from './app.component';
 import { InsultCardComponent } from './insult-card/insult-card.component';
 import { InsultFormComponent } from './insult-form/insult-form.component';
+import { TruncatePipe } from './truncate.pipe';
 
 const appRoutes: Routes = [
   { path: ':id', component: InsultCardComponent },
@@ -19,7 +20,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     InsultCardComponent,
-    InsultFormComponent
+    InsultFormComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
