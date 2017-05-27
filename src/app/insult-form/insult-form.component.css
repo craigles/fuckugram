@@ -2,8 +2,18 @@
     text-align: center;
 }
 
-form.insult-form {
+form {
     padding-top: 20px;
+    text-align: center;
+}
+
+button {
+    display: block;
+    width: 100%;
+}
+
+div#fieldContainer {
+    height: 210px;
 }
 
 input#copy-input {
