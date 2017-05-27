@@ -3,7 +3,7 @@
 }
 
 form.insult-form {
-    padding-top:20px;
+    padding-top: 20px;
 }
 
 input#copy-input {
@@ -39,3 +39,23 @@ h1 {
     font-size: 100px;
     text-align: center;
 }
+
+input[type='radio'] {
+    display: none;
+}
+
+label {
+    margin: 0px;
+    padding-right:3px;
+    padding-left:3px;
+    font-weight: normal;
+}
+
+label:hover {
+    cursor: pointer;
+    color: #337ab7;
+}
+
+label[is-selected=true] {
+    color: #337ab7;
+} 

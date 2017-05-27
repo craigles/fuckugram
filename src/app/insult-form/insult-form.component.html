@@ -1,20 +1,19 @@
 <h1>Insultagram</h1>
 <form #insultForm="ngForm" class="insult-form" (submit)="insult()" novalidate>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8">
       <div class="form-group">
-        <label>Insult</label>
-        <select [(ngModel)]="selectedOperation" name="selectedOperation" class="form-control">
-          <option selected disabled value="">Select Insult</option>
-          <option *ngFor="let o of operations" [ngValue]="o">{{o.name | slice:0:30}}</option>
-        </select>
+          <label *ngFor="let o of operations" [attr.is-selected]="selectedOperation == o">
+            <input type="radio" [(ngModel)]="selectedOperation" name="selectedOperation" [value]="o" />
+            {{o.name | slice:0:30}}
+          </label>
       </div>
       
       <div class="form-group" *ngIf="selectedOperation">
         <button type="submit" [disabled]="!fieldsAreValid()" class="btn btn-block btn-primary">Create Insultagram</button>
       </div>
     </div>
-    <div class="col-md-6" *ngIf="selectedOperation">
+    <div class="col-md-4" *ngIf="selectedOperation">
       <div *ngFor="let f of selectedOperation.fields; let i = index" class="form-group">
         <label>{{f.name}}</label>
         <input [(ngModel)]="fields[i]" name="fields[i]" class="form-control" placeholder="{{f.name}}"/>
