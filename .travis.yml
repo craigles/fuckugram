@@ -18,11 +18,10 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 before_script:
-- npm install -g @angular/cli
-- npm install -g karma
-- npm install -g angular-cli-ghpages
-- npm install
+- npm install i -g @angular/cli
+- npm install i -g karma
+- npm install i -g angular-cli-ghpages
 - ng build --prod --base-href "https://craigles.github.io/insultagram/"
-- angular-cli-ghpages
+- angular-cli-ghpages --no-silent
 
 script: karma start config/karma.conf.js --single-run
