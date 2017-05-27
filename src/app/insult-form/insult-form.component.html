@@ -5,7 +5,7 @@
       <div class="form-group">
           <label *ngFor="let o of operations" [attr.is-selected]="selectedOperation == o">
             <input type="radio" [(ngModel)]="selectedOperation" name="selectedOperation" [value]="o" />
-            {{o.name | truncate:25}}
+            {{o.name | truncate:27}}
           </label>
       </div>
       
