@@ -12,10 +12,6 @@ button {
     width: 100%;
 }
 
-div#fieldContainer {
-    height: 210px;
-}
-
 input#copy-input {
     background-color: #444;
     border-color: #444;
