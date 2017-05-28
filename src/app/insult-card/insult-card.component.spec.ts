@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Router } from '@angular/router';
 import { InsultCardComponent } from './insult-card.component';
 
 describe('InsultCardComponent', () => {
