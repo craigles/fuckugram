@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Http, Jsonp, Response, RequestOptions, Headers } from '@angular/http';
 import { InsultService } from '../insult.service';
+import { InsulterDescriptionsService } from '../insulter-descriptions.service';
 import { OperationResolver } from '../operation-resolver';
 import { UrlShortenerService } from '../url-shortener.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
@@ -9,7 +11,7 @@ import { Clipboard } from 'ts-clipboard';
   selector: 'insult-form',
   templateUrl: './insult-form.component.html',
   styleUrls: ['./insult-form.component.css'],
-  providers: [InsultService, UrlShortenerService, OperationResolver]
+  providers: [InsultService, InsulterDescriptionsService, UrlShortenerService, OperationResolver]
 })
 export class InsultFormComponent implements OnInit {
   insultMessage = "";
@@ -19,13 +21,18 @@ export class InsultFormComponent implements OnInit {
   insultee = "";
   fields: string[] = [];
   operations = [];
+  insulterDescriptions = [];
+  insulterDescription = "";
 
   constructor(
     private insultService: InsultService,
+    private insulterDescriptionsService: InsulterDescriptionsService,
     private urlShortenerService: UrlShortenerService,
     private router: Router,
-    private route: ActivatedRoute
-    ) { }
+    private route: ActivatedRoute,
+    private http: Http
+    ) {
+    }
 
   insult() {
     this.insultService.insult(this.selectedOperation, this.fields)
@@ -40,6 +47,7 @@ export class InsultFormComponent implements OnInit {
           });
 
         this.speak(this.insultMessage);
+        this.insulterDescription = this.insulterDescriptionsService.randomDescription();
 
         let nameIndex = this.selectedOperation["fields"].findIndex(f => f["field"] == "name");
         this.insultee = this.fields[nameIndex];
@@ -61,7 +69,10 @@ export class InsultFormComponent implements OnInit {
 
   ngOnInit() {
     this.operations = this.route.snapshot.data["operations"].filter(o => o["fields"].find(f => f["field"] == "from"));
+    
   }
+
+  
  
   fieldsAreValid() {
     let selectedFieldsLength = this.selectedOperation["fields"].length;

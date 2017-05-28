@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { OperationResolver } from './operation-resolver';
 import { InsultService } from './insult.service';
+import { InsulterDescriptionsService } from './insulter-descriptions.service';
 
 import { AppComponent } from './app.component';
 import { InsultCardComponent } from './insult-card/insult-card.component';
@@ -29,7 +30,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [OperationResolver, InsultService],
+  providers: [OperationResolver, InsultService, InsulterDescriptionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
