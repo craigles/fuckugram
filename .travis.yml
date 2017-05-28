@@ -17,9 +17,11 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 
-install:
+before_script:
 - npm install i -g @angular/cli
 - npm install i -g angular-cli-ghpages
 - npm install
 - ng build --prod --base-href "https://craigles.github.io/insultagram/"
 - angular-cli-ghpages --repo=https://GH_TOKEN@github.com/craigles/insultagram.git
+
+script: 
