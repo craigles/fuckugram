@@ -15,7 +15,7 @@ export class InsulterDescriptionsService {
   }
 
   private InsulterDescriptions() {
-    return this.http.get("/assets/insulterDescriptions.json")
+    return this.http.get(`${window.location.href}assets/insulterDescriptions.json`)
       .map(r => r.json());
   }
 
