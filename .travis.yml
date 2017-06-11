@@ -21,7 +21,7 @@ before_script:
 - npm install i -g @angular/cli
 - npm install i -g angular-cli-ghpages
 - npm install
-- ng build --prod --base-href "https://craigles.github.io/insultagram/"
+- ng build --prod --base-href "http://insultagram.net/"
 - angular-cli-ghpages --repo=https://GH_TOKEN@github.com/craigles/insultagram.git
 
 script: karma start karma.conf.js --single-run
