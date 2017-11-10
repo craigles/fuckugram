@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/craigles/insultagram.svg?branch=master)](https://travis-ci.org/craigles/insultagram)
 
 # Insultagram
+I wanted to learn Angular 2 so I created a stupid site which consumed an API.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.4.
 
